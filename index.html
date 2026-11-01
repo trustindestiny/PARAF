@@ -385,119 +385,34 @@
     #grid{ grid-template-columns:1fr; }
   }
 
-
   /* ---------- PWA / compact responsive layout ---------- */
   html { min-height:100%; }
   body { padding-bottom: env(safe-area-inset-bottom); }
   .hero, .controls, main, footer { max-width:1440px; }
-  .app-layout {
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 300px;
-    gap:14px;
-    align-items:start;
-  }
+  .app-layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:14px; align-items:start; }
   .campaign-column { min-width:0; }
-  .data-note {
-    margin:0 0 12px;
-    padding:10px 12px;
-    border:1px solid var(--line);
-    border-radius:10px;
-    background:var(--card);
-    color:var(--ink-dim);
-    font-size:11px;
-    line-height:1.5;
-  }
-  .ranking-section {
-    position:sticky;
-    top:12px;
-    margin:0;
-    padding:13px;
-    max-height:calc(100vh - 24px);
-    overflow:auto;
-  }
-  .ranking-head { align-items:flex-start; }
-  .ranking-head h2 { font-size:17px; line-height:1.2; }
-  .ranking-row {
-    grid-template-columns:25px minmax(0,1fr);
-    gap:6px;
-    padding:9px 2px;
-  }
+  .data-note { margin:0 0 12px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink-dim); font-size:11px; line-height:1.5; }
+  .ranking-section { position:sticky; top:12px; margin:0; padding:13px; max-height:calc(100vh - 24px); overflow:auto; }
+  .ranking-head { align-items:flex-start; } .ranking-head h2 { font-size:17px; line-height:1.2; }
+  .ranking-row { grid-template-columns:25px minmax(0,1fr); gap:6px; padding:9px 2px; }
   .ranking-title { font-size:11px; line-height:1.35; }
-  .ranking-amount {
-    grid-column:2;
-    font-size:13px;
-    justify-self:start;
-  }
-  #grid { grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); }
-  .card { padding:13px; gap:9px; }
-  .card-title { font-size:13px; }
-  .amount { font-size:20px; }
+  .ranking-amount { grid-column:2; font-size:13px; justify-self:start; }
+  #grid { grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); } .card { padding:13px; gap:9px; } .card-title { font-size:13px; } .amount { font-size:20px; }
   .controls { backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
-  button, a, input { -webkit-tap-highlight-color:transparent; }
-  a, button { touch-action:manipulation; }
-
+  button, a, input { -webkit-tap-highlight-color:transparent; } a, button { touch-action:manipulation; }
   @media(max-width:760px) {
-    .hero { padding:17px 12px 9px; }
-    .controls { padding:8px 12px 9px; }
-    main { padding:7px 10px 32px; }
-    footer { padding:0 10px 25px; }
-    .brand-text h1 { font-size:19px; }
-    .chip { width:32px; height:26px; }
-    .hero-sub { font-size:11px; margin-top:7px; }
-    .count-badge { padding:6px 10px; font-size:11px; }
-    .search-row { gap:6px; margin-bottom:7px; }
-    #search { font-size:12px; padding:9px 8px 9px 32px; }
-    .clear-btn { padding:0 9px; font-size:10px; }
-    .filter-label { font-size:9px; }
-    .filt { font-size:10px; padding:3px 6px; }
-    .app-layout {
-      grid-template-columns:minmax(0,1fr) minmax(112px,34%);
-      gap:7px;
-    }
-    .data-note { font-size:9px; line-height:1.4; padding:8px; margin-bottom:8px; }
-    #grid { grid-template-columns:1fr; gap:7px; margin-top:0; }
-    .card { padding:9px; border-radius:9px; gap:7px; }
-    .card-top { gap:5px; }
-    .cat-icon { width:25px; height:25px; font-size:12px; }
-    .loc-tag { font-size:8px; padding:2px 4px; }
-    .card-title { font-size:11px; line-height:1.35; }
-    .amount { font-size:15px; }
-    .amount-label { display:block; margin:2px 0 0; font-size:8px; }
-    .tag { font-size:8px; padding:3px 5px; }
-    .cat-label { font-size:8px; }
-    .card a { font-size:9px !important; line-height:1.35; }
-    .ranking-section {
-      position:sticky;
-      top:7px;
-      padding:7px 6px;
-      border-radius:9px;
-      max-height:calc(100dvh - 14px);
-    }
-    .ranking-head { display:block; margin-bottom:6px; }
-    .ranking-head h2 { font-size:12px; margin-top:3px; }
-    .ranking-note { font-size:7px; margin-top:3px; }
-    .ranking-row {
-      grid-template-columns:17px minmax(0,1fr);
-      gap:3px;
-      padding:7px 0;
-    }
-    .ranking-rank { font-size:9px; }
-    .ranking-title {
-      font-size:8px;
-      line-height:1.25;
-      overflow-wrap:anywhere;
-    }
-    .ranking-amount { font-size:10px; grid-column:2; }
-    .data-note strong { display:inline; }
-    #empty { padding:35px 5px; font-size:10px; }
-    #empty .big { font-size:13px; }
+    .hero { padding:17px 12px 9px; } .controls { padding:8px 12px 9px; } main { padding:7px 10px 32px; } footer { padding:0 10px 25px; }
+    .brand-text h1 { font-size:19px; } .chip { width:32px; height:26px; } .hero-sub { font-size:11px; margin-top:7px; } .count-badge { padding:6px 10px; font-size:11px; }
+    .search-row { gap:6px; margin-bottom:7px; } #search { font-size:12px; padding:9px 8px 9px 32px; } .clear-btn { padding:0 9px; font-size:10px; } .filter-label { font-size:9px; } .filt { font-size:10px; padding:3px 6px; }
+    .app-layout { grid-template-columns:minmax(0,1fr) minmax(112px,34%); gap:7px; }
+    .data-note { font-size:9px; line-height:1.4; padding:8px; margin-bottom:8px; } #grid { grid-template-columns:1fr; gap:7px; margin-top:0; }
+    .card { padding:9px; border-radius:9px; gap:7px; } .card-top { gap:5px; } .cat-icon { width:25px; height:25px; font-size:12px; } .loc-tag { font-size:8px; padding:2px 4px; } .card-title { font-size:11px; line-height:1.35; }
+    .amount { font-size:15px; } .amount-label { display:block; margin:2px 0 0; font-size:8px; } .tag { font-size:8px; padding:3px 5px; } .cat-label { font-size:8px; } .card a { font-size:9px !important; line-height:1.35; }
+    .ranking-section { position:sticky; top:7px; padding:7px 6px; border-radius:9px; max-height:calc(100dvh - 14px); } .ranking-head { display:block; margin-bottom:6px; } .ranking-head h2 { font-size:12px; margin-top:3px; } .ranking-note { font-size:7px; margin-top:3px; }
+    .ranking-row { grid-template-columns:17px minmax(0,1fr); gap:3px; padding:7px 0; } .ranking-rank { font-size:9px; } .ranking-title { font-size:8px; line-height:1.25; overflow-wrap:anywhere; } .ranking-amount { font-size:10px; grid-column:2; }
+    .data-note strong { display:inline; } #empty { padding:35px 5px; font-size:10px; } #empty .big { font-size:13px; }
   }
-  @media(max-width:360px) {
-    .app-layout { grid-template-columns:minmax(0,1fr) 104px; gap:5px; }
-    .ranking-section { padding:6px 5px; }
-    .ranking-head h2 { font-size:11px; }
-    .card-title { font-size:10px; }
-  }
+  @media(max-width:360px) { .app-layout { grid-template-columns:minmax(0,1fr) 104px; gap:5px; } .ranking-section { padding:6px 5px; } .ranking-head h2 { font-size:11px; } .card-title { font-size:10px; } }
 
 </style>
 </head>
@@ -558,10 +473,7 @@
     </section>
     <aside class="ranking-section" aria-label="Genel ParafPara sıralaması">
       <div class="ranking-head">
-        <div>
-          <div class="filter-label">GENEL SIRALAMA</div>
-          <h2>En yüksek ParafPara</h2>
-        </div>
+        <div><div class="filter-label">GENEL SIRALAMA</div><h2>En yüksek ParafPara</h2></div>
         <div class="ranking-note">Büyükten küçüğe</div>
       </div>
       <div id="ranking"></div>
@@ -596,405 +508,155 @@ const LOCS = {
   YD: {label:"Yurt Dışı"},
 };
 
-const DATA = [
-  [
-    "Seçili E-Ticaret Alışverişlerinize 8.000 TL'ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "eticaret",
-    "YI",
-    8000,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/secili-eticaret-alisverislerinize-8000tlye-varan-parafpara.html"
-  ],
-  [
-    "Market Harcamalarınıza 1.000 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "market",
-    "YI",
-    1000,
-    "https://www.paraf.com.tr/tr/kampanyalar/market/market-harcamalariniza-1000tl-parafpara12.html"
-  ],
-  [
-    "Seçili E-Ticaret Alışverişlerinize 2.000 TL'ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "eticaret",
-    "YI",
-    2000,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/secili-eticaret-alisverislerinize-2000tlye-varan-parafpara21.html"
-  ],
-  [
-    "E-Ticaret Alışverişlerinize 1.000 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "eticaret",
-    "YI",
-    1000,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/e-ticaret-alisverislerinize-1000tl-parafpara.html"
-  ],
-  [
-    "Emlak ve Çevre Temizlik Vergisi Ödemelerinize Ücretsiz 4 Aya Varan Taksit",
-    [
-      "taksit",
-      "indirim"
-    ],
-    "diger",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/emlak-ve-cevre-temizlik-vergisi-odemelerinize-ucretsiz-4evaran-taksit1.html"
-  ],
-  [
-    "Monster Notebook’ta 10.000 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "elektronik",
-    "YI",
-    10000,
-    "https://www.paraf.com.tr/tr/kampanyalar/beyaz-esya-ve-elektronik/monster-notebookta-10000-tl-parafpara2.html"
-  ],
-  [
-    "Giyim ve Kozmetik Alışverişlerinize 1.250 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "giyim",
-    "YI",
-    1250,
-    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/giyim-ve-kozmetik-alisverislerinize-1250tl-parafpara.html"
-  ],
-  [
-    "Parafly Kredi Kartınız ile Size Özel 5.000 TL ParafPara Kampanyası",
-    [
-      "parafpara"
-    ],
-    "diger",
-    "YI",
-    5000,
-    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/parafly-kredi-kartiniz-ile-size-ozel-5000tl-parafpara-kampanyasi1.html"
-  ],
-  [
-    "Trendyol ‘da Peşin Fiyatına 9 Aya varan Taksit",
-    [
-      "taksit"
-    ],
-    "eticaret",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/trendyolda-pesin-fiyatina-9-aya-varan-taksitaralik.html"
-  ],
-  [
-    "Amazon.com.tr de Peşin Fiyatına 9 aya varan Taksit",
-    [
-      "taksit"
-    ],
-    "eticaret",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/amazon-com-trde-pesin-fiyatina-9-aya-varan-taksit.html"
-  ],
-  [
-    "Tarım Kredi Koop Marketler'de 1.000 TL’ye Varan ParafPara!",
-    [
-      "parafpara"
-    ],
-    "market",
-    "YI",
-    1000,
-    "https://www.paraf.com.tr/tr/kampanyalar/market/tarim-kredi-koop-marketlerde-1000tlye-varan-parafpara.html"
-  ],
-  [
-    "Cepte Şok'ta 500 TL'ye Varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "market",
-    "YI",
-    500,
-    "https://www.paraf.com.tr/tr/kampanyalar/market/cepte-sokta-500tlye-varan-parafpara.html"
-  ],
-  [
-    "Market Harcamalarınıza 1.500 TL, Mobil/QR ile Ödemelerinize 2.000 TL’ye varan Pa",
-    [
-      "diger"
-    ],
-    "market",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/market/market-harcamalariniza-1500tl-mobil-qr-ile-odemelerinize-2000-tlye-varan-parafpara1.html"
-  ],
-  [
-    "Mobilya, Dekorasyon ve Yapı Marketi Alışverişinize 1.250 TL'ye Varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "mobilya",
-    "YI",
-    1250,
-    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/mobilya-dekorasyon-ve-yapi-marketi-alisverislerinize-1250-tlye-varan-parafpara2.html"
-  ],
-  [
-    "Madame Coco da 400 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "mobilya",
-    "YI",
-    400,
-    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/madame-cocoda-400-tl-parafpara.html"
-  ],
-  [
-    "Paraf Esnaf ile Market ve Gıda Harcamalarınıza 700 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "diger",
-    "YI",
-    700,
-    "https://www.paraf.com.tr/tr/kampanyalar/ticari-kampanyalar/paraf-esnaf-ile-market-ve-gida-harcamalariniza-700tl-parafpara.html"
-  ],
-  [
-    "Giyim, optik ve saat alışverişlerinize 2.000 TL, mobil/QR ile ödemelerinize eks",
-    [
-      "diger"
-    ],
-    "giyim",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/giyim-optik-ve-saat-alisverislerinize-2000tl-mobil-qr-ile-odemelerinize-ekstra-500tl-toplam-2500tl-parafpara1.html"
-  ],
-  [
-    "Saat&Saat’te Peşin Fiyatına 5 Taksit",
-    [
-      "taksit"
-    ],
-    "giyim",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/saatvesaatte-pesin-fiyatina-5-taksit.html"
-  ],
-  [
-    "Paraf ile Madame Coco mağazalarında Peşin Fiyatına 3 taksit fırsatı!",
-    [
-      "taksit"
-    ],
-    "mobilya",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/paraf-ile-madame-coco-magazalarinda-pesin-fiyatina-3-taksit-firsati.html"
-  ],
-  [
-    "Kozmetik, Güzellik Salonu ve Kuaför Harcamalarınıza 750 TL’ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "giyim",
-    "YI",
-    750,
-    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/kozmetik-guzellik-salonu-ve-kuafor-harcamalariniza-625tl-parafpara-mobil-qr-ile-odemelerinize-750tlye-varan-parafpara1.html"
-  ],
-  [
-    "Premium'a Özel Yurt Dışı Online Alışverişlerinize 3.000 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "yurtdisi",
-    "YD",
-    3000,
-    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/premiuma-ozel-yurt-disi-online-alisverislerinize-3000-tl-parafpara2.html"
-  ],
-  [
-    "Seyahat, konaklama ve araç kiralama harcamalarınıza 3.500 TL ParafPara!",
-    [
-      "parafpara"
-    ],
-    "seyahat",
-    "YI",
-    3500,
-    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/seyahat-konaklama-ve-arac-kiralama-harcamalariniza-3500tl-parafpara41.html"
-  ],
-  [
-    "Akaryakıt Harcamalarınıza 450 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "akaryakit",
-    "YI",
-    450,
-    "https://www.paraf.com.tr/tr/kampanyalar/akaryakit/akaryakit-harcamalariniza-450-parafpara.html"
-  ],
-  [
-    "Touristica.com.tr'de 8.500 TL'ye varan ParafPara ve Peşin fiyatına 9 Taksit!",
-    [
-      "parafpara",
-      "taksit"
-    ],
-    "seyahat",
-    "YI",
-    8500,
-    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/touristica-com-tr-de-8500tlye-varan-parafpara-ve-pesin-fiyatina-9-taksit-agustos12.html"
-  ],
-  [
-    "Otomotiv Lastik,Yedek Parça ve Araç Bakım Harcamalarınıza 1.500 TL'ye Varan Para",
-    [
-      "diger"
-    ],
-    "otomotiv",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/otomotiv/otomotiv-lastik-yedek-parca-ve-arac-bakim-harcamalariniza-1500tlye-varan-parafpara2.html"
-  ],
-  [
-    "Paraf Troy Kartlara Özel Seçili Sektörlerde 400 TL ye varan İndirim Kampanyası",
-    [
-      "diger"
-    ],
-    "yemek",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/kafe-ve-restoran/paraf-troy-kartlara-ozel-secili-sektorlerde-400tlye-varan-indirim-kampanyasi1.html"
-  ],
-  [
-    "Beyaz Eşya ve Elektronik Alışverişlerinize 3.500 TL'ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "elektronik",
-    "YI",
-    3500,
-    "https://www.paraf.com.tr/tr/kampanyalar/beyaz-esya-ve-elektronik/beyaz-esya-ve-elektronik-alisverislerinize-3500tlye-varan-parafpara11.html"
-  ],
-  [
-    "Mobilya, Dekorasyon ve Yapı Marketi Alışverişinize 6.000 TL'ye Varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "mobilya",
-    "YI",
-    6000,
-    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/mobilya-dekorasyon-ve-yapi-marketi-alisverislerinize-6000tlye-varan-parafpara21.html"
-  ],
-  [
-    "Peşin Okul Ödemelerinize Paraf POS'larında Ücretsiz 6 Aya Varan Taksit Kampanyas",
-    [
-      "taksit",
-      "indirim"
-    ],
-    "egitim",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/egitim-kirtasiye/pesin-okul-odemelerinize-paraf-poslarinda-ucretsiz-6-ya-varan-taksit-kampanyasi.html"
-  ],
-  [
-    "Uçak bileti harcamalarınıza 2.250 TL'ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "seyahat",
-    "YI",
-    2250,
-    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/ucak-bileti-harcamalariniza-2250-tlye-varan-parafpara11.html"
-  ],
-  [
-    "Yurt Dışı Alışverişlerinize 10.000 TL'ye varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "yurtdisi",
-    "YD",
-    10000,
-    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-alisverislerinize-10000tlye-varan-parafpara.html"
-  ],
-  [
-    "Silver logolu Paraf Premium Mastercard Sahiplerine Yurt Dışı Otel Harcamalarında",
-    [
-      "diger"
-    ],
-    "seyahat",
-    "YD",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/silver-logolu-paraf-premium-mastercard-sahiplerine-yurt-disi-otel-harcamalarinda-yuzde10-indirim.html"
-  ],
-  [
-    "Premium'a Özel Yurt Dışı Online Seyahat Alışverişlerinize 6.000 TL'ye varan Para",
-    [
-      "diger"
-    ],
-    "yurtdisi",
-    "YD",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/premiuma-ozel-yurtdisi-online-seyahat-alisverislerinize-6000tlye-varan-parafpara1.html"
-  ],
-  [
-    "Yurt Dışı Online Seyahat Alışverişlerinize 1.500 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "yurtdisi",
-    "YD",
-    1500,
-    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-online-seyahat-alisverislerinize-1500tl-parafpara1.html"
-  ],
-  [
-    "Yurt dışı online alışverişlerinize 750 TL ParafPara!",
-    [
-      "parafpara"
-    ],
-    "yurtdisi",
-    "YD",
-    750,
-    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-online-alisverislerinize-750-tl-parafpara1.html"
-  ],
-  [
-    "Hepsiburada'da peşin fiyatına 9 aya varan taksit",
-    [
-      "taksit"
-    ],
-    "eticaret",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/hepsiburadada-pesin-fiyatina-9-aya-varan-taksit11.html"
-  ],
-  [
-    "Otomatik Fatura Ödeme Talimatlarınıza 1.000 TL'ye Varan ParafPara",
-    [
-      "parafpara"
-    ],
-    "diger",
-    "YI",
-    1000,
-    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/otomatik-fatura-odeme-talimatlariniza-1000-tlye-varan-parafpara1111.html"
-  ],
-  [
-    "App Store harcamalarınıza 100 TL ParafPara!",
-    [
-      "parafpara"
-    ],
-    "diger",
-    "YI",
-    100,
-    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/app-store-harcamalariniza-100-tl-parafpara221.html"
-  ],
-  [
-    "Paraf Değerlimiz Kredi Kart Sahibi Emekli Müşterilerimize Özel Otomatik Fatura Ö",
-    [
-      "diger"
-    ],
-    "diger",
-    "YI",
-    0,
-    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/paraf-degerlimiz-kredi-kart-sahibi-emekli-musterilerimize-ozel-otomatik-fatura-odeme-talimatlarina-3500tlye-varan-parafpara1111.html"
-  ],
-  [
-    "Veteriner ve Pet Shop Harcamalarınıza Özel 600 TL ParafPara",
-    [
-      "parafpara"
-    ],
-    "diger",
-    "YI",
-    600,
+</script>
+<script src="campaigns-1.js"></script>
+<script src="campaigns-2.js"></script>
+<script src="campaigns-3.js"></script>
+<script>
+const DATA = window.PARAF_DATA || [];
+if (DATA.length !== 182) console.error("PARAF kampanya verisi eksik:", DATA.length);
+// ---------- State & Render ----------
+const state = { search:"", type:"all", loc:"all", cat:"all" };
+
+function typeLabelClass(t){ return t === "parafpara" ? "parafpara" : t === "taksit" ? "taksit" : t === "indirim" ? "indirim" : "diger"; }
+
+function buildTypeRow(){
+  const row = document.getElementById('typeRow');
+  const counts = {};
+  Object.keys(TYPES).forEach(k=>counts[k]=DATA.filter(d=>d[1].includes(k)).length);
+  let html = `<button class="filt type-filt active" data-type="all">Tümü <span class="n">${DATA.length}</span></button>`;
+  Object.entries(TYPES).forEach(([k,v])=>{
+    html += `<button class="filt type-filt" data-type="${k}">${v.label} <span class="n">${counts[k]}</span></button>`;
+  });
+  row.innerHTML = html;
+  row.querySelectorAll('.filt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      state.type = btn.dataset.type;
+      row.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  });
+}
+
+function buildLocRow(){
+  const row = document.getElementById('locRow');
+  const yi = DATA.filter(d=>d[3]==='YI').length;
+  const yd = DATA.filter(d=>d[3]==='YD').length;
+  row.innerHTML = `
+    <button class="filt loc-filt active" data-loc="all">Tümü <span class="n">${DATA.length}</span></button>
+    <button class="filt loc-filt" data-loc="YI">Yurt İçi <span class="n">${yi}</span></button>
+    <button class="filt loc-filt" data-loc="YD">Yurt Dışı <span class="n">${yd}</span></button>
+  `;
+  row.querySelectorAll('.filt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      state.loc = btn.dataset.loc;
+      row.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  });
+}
+
+function buildCatRow(){
+  const row = document.getElementById('catRow');
+  const counts = {};
+  Object.keys(CATS).forEach(k=>counts[k]=DATA.filter(d=>d[2]===k).length);
+  let html = `<button class="filt cat-filt active" data-cat="all">Tümü <span class="n">${DATA.length}</span></button>`;
+  Object.entries(CATS).forEach(([k,v])=>{
+    if(counts[k] === 0) return;
+    html += `<button class="filt cat-filt" data-cat="${k}">${v.icon} ${v.label} <span class="n">${counts[k]}</span></button>`;
+  });
+  row.innerHTML = html;
+  row.querySelectorAll('.filt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      state.cat = btn.dataset.cat;
+      row.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  });
+}
+
+function matches(item){
+  const [title, types, cat, loc] = item;
+  if(state.search && !title.toLocaleLowerCase('tr').includes(state.search)) return false;
+  if(state.type !== 'all' && !types.includes(state.type)) return false;
+  if(state.loc !== 'all' && loc !== state.loc) return false;
+  if(state.cat !== 'all' && cat !== state.cat) return false;
+  return true;
+}
+
+function render(){
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const filtered = DATA.filter(matches).sort((a,b)=>(b[4]||0)-(a[4]||0));
+
+  document.getElementById('count').textContent = filtered.length;
+  document.getElementById('total').textContent = DATA.length;
+
+  if(filtered.length === 0){
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map(([title, types, cat, loc, amount, url], index)=>{
+    const catInfo = CATS[cat] || CATS.diger;
+    const tags = types.map(t=>`<span class="tag ${typeLabelClass(t)}">${TYPES[t].label}</span>`).join('');
+    const amountHtml = amount ? `<div class="amount">${amount.toLocaleString('tr-TR')} TL <span class="amount-label">maks. ParafPara</span></div>` : '';
+    return `
+      <div class="card">
+        <div class="card-top">
+          <div class="cat-icon">${catInfo.icon}</div>
+          <div class="loc-tag ${loc==='YD'?'yd':''}">${loc==='YD'?'Yurt Dışı':'Yurt İçi'}</div>
+        </div>
+        <div class="card-title">${title}</div>
+        ${amountHtml}
+        <div class="card-bottom">
+          ${tags}
+          <span class="cat-label">${catInfo.label}</span>
+        </div>
+        <div style="margin-top:12px"><a href="${url}" target="_blank" rel="noopener noreferrer" style="display:inline-block;color:var(--brand);font-size:12px;font-weight:600;text-decoration:none">Resmî kampanya koşulları ↗</a></div>
+      </div>
+    `;
+  }).join('');
+}
+
+document.getElementById('search').addEventListener('input', (e)=>{
+  state.search = e.target.value.trim().toLocaleLowerCase('tr');
+  render();
+});
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  state.search = '';
+  state.type = 'all'; state.loc = 'all'; state.cat = 'all';
+  document.getElementById('search').value = '';
+  document.querySelectorAll('.type-filt').forEach(b=>b.classList.toggle('active', b.dataset.type==='all'));
+  document.querySelectorAll('.loc-filt').forEach(b=>b.classList.toggle('active', b.dataset.loc==='all'));
+  document.querySelectorAll('.cat-filt').forEach(b=>b.classList.toggle('active', b.dataset.cat==='all'));
+  render();
+});
+
+buildTypeRow();
+buildLocRow();
+buildCatRow();
+
+function renderRanking(){
+  const box = document.getElementById('ranking');
+  const sorted = DATA.filter(d=>d[4]).sort((a,b)=>b[4]-a[4]);
+  box.innerHTML = sorted.map((d,i)=>`
+    <div class="ranking-row">
+      <div class="ranking-rank">${String(i+1).padStart(2,'0')}</div>
+      <div class="ranking-title">${d[0]}</div>
+      <div class="ranking-amount">${d[4].toLocaleString('tr-TR')} TL</div>
+    </div>
+  `).join('');
+}
+renderRanking();
+render();
+</script>
+</body>
+</html>
