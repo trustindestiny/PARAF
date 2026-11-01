@@ -1,9 +1,7 @@
-const CACHE_NAME = "paraf-kampanya-kasim-2026-v7";
+const CACHE_NAME = "paraf-kampanya-kasim-2026-v8";
 const CORE_ASSETS = [
   "./", "./index.html", "./manifest.json",
   "./campaigns-1.js", "./campaigns-2.js", "./campaigns-3.js",
-  "./icons/icon-192-v2.png", "./icons/icon-512-v2.png",
-  "./icons/icon-512-maskable-v2.png", "./icons/apple-touch-icon-v2.png"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_ASSETS)).then(() => self.skipWaiting()));
