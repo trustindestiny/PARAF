@@ -28,10 +28,10 @@ jobs:
       - name: Generate install icons
         run: |
           mkdir -p icons
-          convert icons/paraf-icon.svg -resize 192x192 icons/icon-192.png
-          convert icons/paraf-icon.svg -resize 512x512 icons/icon-512.png
-          convert icons/paraf-icon.svg -resize 512x512 -gravity center -background transparent -extent 512x512 icons/icon-512-maskable.png
-          convert icons/paraf-icon.svg -resize 180x180 icons/apple-touch-icon.png
+          convert -background "#0756b8" icons/paraf-icon.svg -resize 192x192^ -gravity center -extent 192x192 PNG32:icons/icon-192-v2.png
+          convert -background "#0756b8" icons/paraf-icon.svg -resize 512x512^ -gravity center -extent 512x512 PNG32:icons/icon-512-v2.png
+          convert -background "#0756b8" icons/paraf-icon.svg -resize 512x512^ -gravity center -extent 512x512 PNG32:icons/icon-512-maskable-v2.png
+          convert -background "#0756b8" icons/paraf-icon.svg -resize 180x180^ -gravity center -extent 180x180 PNG32:icons/apple-touch-icon-v2.png
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
