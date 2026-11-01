@@ -4,10 +4,9 @@ Paraf kampanyalarını tek ekranda takip etmek için çevrimdışı çalışabil
 
 ## GitHub Pages yayını
 
-1. Repository > **Settings > Pages** bölümünü açın.
-2. **Build and deployment > Source** seçeneğini **GitHub Actions** yapın.
-3. Actions sekmesinde **Deploy PARAF to GitHub Pages** iş akışının tamamlanmasını bekleyin.
-4. Uygulama adresi: https://trustindestiny.github.io/PARAF/
+1. Repository > **Settings > Pages** bölümünde **Build and deployment > Source** seçeneği **GitHub Actions** olmalıdır.
+2. Actions sekmesinde **Deploy PARAF to GitHub Pages** iş akışının tamamlanmasını bekleyin.
+3. Uygulama adresi: https://trustindestiny.github.io/PARAF/
 
 ## Telefona yükleme
 
