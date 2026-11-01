@@ -1,7 +1,10 @@
-const CACHE_NAME = "paraf-kampanya-kasim-2026-v2";
+const CACHE_NAME = "paraf-kampanya-kasim-2026-v3";
 const CORE_ASSETS = [
   "./",
   "./index.html",
+  "./campaigns-1.js",
+  "./campaigns-2.js",
+  "./campaigns-3.js",
   "./manifest.json",
   "./icons/icon-192.png","./icons/icon-512.png","./icons/icon-512-maskable.png","./icons/apple-touch-icon.png"
 ];
