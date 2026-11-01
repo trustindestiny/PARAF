@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Paraf Kampanya Defteri",
+  "short_name": "Paraf",
+  "description": "Paraf kampanyalarını ara, filtrele ve ParafPara fırsatlarını sırala.",
+  "lang": "tr-TR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0756b8",
+  "icons": [
+    {
+      "src": "icons/paraf-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
