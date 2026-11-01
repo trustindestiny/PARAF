@@ -335,9 +335,13 @@
   .ranking-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase}
   .ranking-row{
     display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;
-    padding:10px 8px;border-top:1px solid var(--line-soft)
+    padding:10px 8px;border-top:1px solid var(--line-soft);
+    color:inherit;text-decoration:none;cursor:pointer;border-radius:7px;
+    transition:background .15s ease,transform .15s ease;
   }
   .ranking-row:first-child{border-top:0}
+  .ranking-row:hover{background:var(--card-hover);transform:translateX(2px)}
+  .ranking-row:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
   .ranking-rank{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--ink-faint)}
   .ranking-title{font-size:13px;color:var(--ink)}
   .ranking-amount{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--brand);white-space:nowrap}
@@ -463,7 +467,7 @@
   <div class="app-layout">
     <section class="campaign-column">
       <div class="data-note">
-        <strong>Veri notu:</strong> Bu katalog, 01.11.2026 tarihinde alınan Paraf kampanya liste dökümündeki 182 kayda dayanır. Dökümde kampanyaların başlangıç/bitiş tarihleri ve ayrıntılı koşulları yer almadığından, Kasım boyunca geçerli oldukları varsayılmamıştır. Her karttaki resmi bağlantıdan tarih, katılım ve kart koşullarını kontrol edin.
+        <strong>Veri notu:</strong> Katalog, 01.11.2026 tarihli Paraf listesinde yer alan 182 kaydı içerir. Kampanya tarihleri ve koşulları için resmî bağlantıları kontrol edin.
       </div>
       <div id="grid"></div>
       <div id="empty">
@@ -648,11 +652,11 @@ function renderRanking(){
   const box = document.getElementById('ranking');
   const sorted = DATA.filter(d=>d[4]).sort((a,b)=>b[4]-a[4]);
   box.innerHTML = sorted.map((d,i)=>`
-    <div class="ranking-row">
+    <a class="ranking-row" href="${d[5]}" target="_blank" rel="noopener noreferrer" aria-label="${d[0]} kampanyasının resmî sayfasını aç">
       <div class="ranking-rank">${String(i+1).padStart(2,'0')}</div>
       <div class="ranking-title">${d[0]}</div>
       <div class="ranking-amount">${d[4].toLocaleString('tr-TR')} TL</div>
-    </div>
+    </a>
   `).join('');
 }
 renderRanking();
