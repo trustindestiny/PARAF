@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a5c9e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Paraf">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<title>Paraf Kampanya Defteri · Kasım 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4f7fb;
+    --bg-soft: #ffffff;
+    --card: #ffffff;
+    --card-hover: #f2f6fd;
+    --line: #cbd5e1;
+    --line-soft: #e2e8f0;
+    --ink: #0b1b33;
+    --ink-dim: #475569;
+    --ink-faint: #94a3b8;
+    --brand: #1a5c9e;
+    --brand-soft: rgba(26,92,158,0.10);
+    --teal: #29796f;
+    --teal-soft: rgba(41,121,111,0.10);
+    --coral: #b8502f;
+    --coral-soft: rgba(184,80,47,0.10);
+    --violet: #5b57a8;
+    --violet-soft: rgba(91,87,168,0.10);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 500px at 12% -8%, rgba(26,92,158,0.06), transparent 60%),
+      radial-gradient(900px 600px at 100% 0%, rgba(41,121,111,0.05), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+
+  .hero{
+    max-width:1180px;
+    margin:0 auto;
+    padding:28px 28px 14px;
+  }
+  .hero-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brandmark{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .chip{
+    width:38px;height:30px;border-radius:6px;
+    background:linear-gradient(135deg, #3b82f6, #1a5c9e);
+    position:relative;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
+    flex-shrink:0;
+  }
+  .chip::before, .chip::after{
+    content:"";
+    position:absolute;
+    background:rgba(255,255,255,0.4);
+  }
+  .chip::before{ top:8px; left:0; right:0; height:1.5px; }
+  .chip::after{ left:50%; top:0; bottom:0; width:1.5px; }
+  .brand-text .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:.16em;
+    color:var(--brand);
+    text-transform:uppercase;
+  }
+  .brand-text h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:26px;
+    margin:2px 0 0;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  .count-badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    background:var(--bg-soft);
+    padding:9px 16px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .count-badge b{ color:var(--brand); font-weight:600; }
+
+  .hero-sub{
+    color:var(--ink-dim);
+    font-size:13.5px;
+    max-width:640px;
+    margin:10px 0 0;
+    line-height:1.5;
+  }
+
+  .controls{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px 10px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:
+      linear-gradient(var(--bg) 85%, transparent);
+    padding-top:8px;
+  }
+  .search-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .search-wrap{
+    flex:1;
+    position:relative;
+  }
+  .search-wrap svg{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    width:16px; height:16px; stroke:var(--ink-faint);
+  }
+  #search{
+    width:100%;
+    padding:9px 14px 9px 40px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink);
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    outline:none;
+    box-shadow: 0 1px 2px rgba(35,32,25,0.04);
+    transition:border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  #search::placeholder{ color:var(--ink-faint); }
+  #search:focus{ border-color:var(--brand); background:var(--card-hover); box-shadow: 0 0 0 3px rgba(26,92,158,0.12); }
+  .clear-btn{
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-dim);
+    border-radius:10px;
+    padding:0 16px;
+    font-size:13px;
+    font-family:'Inter',sans-serif;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s ease;
+  }
+  .clear-btn:hover{ color:var(--ink); border-color:var(--ink-faint); }
+
+  .filter-block{ margin-bottom:8px; }
+  .filter-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 2px 2px;
+    display:block;
+  }
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    overflow:visible;
+    gap:3px;
+    padding-bottom:0;
+    scrollbar-width:none;
+  }
+  .chip-row::-webkit-scrollbar{ height:5px; }
+  .filt{
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink-dim);
+    padding:2px 7px;
+    border-radius:999px;
+    font-size:11px;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    cursor:pointer;
+    transition:all .15s ease;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    line-height:1.2;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .filt:hover{ border-color:var(--ink-faint); color:var(--ink); }
+  .filt .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    opacity:.6;
+  }
+  .filt.active{
+    background:var(--brand-soft);
+    border-color:var(--brand);
+    color:var(--brand);
+  }
+  .filt.active .n{ opacity:.85; }
+
+  .type-filt.active[data-type="parafpara"]{ background:var(--brand-soft); border-color:var(--brand); color:var(--brand); }
+  .type-filt.active[data-type="taksit"]{ background:var(--teal-soft); border-color:var(--teal); color:var(--teal); }
+  .type-filt.active[data-type="indirim"]{ background:var(--coral-soft); border-color:var(--coral); color:var(--coral); }
+  .type-filt.active[data-type="diger"]{ background:var(--violet-soft); border-color:var(--violet); color:var(--violet); }
+
+  .divider-line{
+    height:1px;
+    background:var(--line-soft);
+    margin:6px 0 0;
+  }
+
+  main{
+    max-width:1180px;
+    margin:0 auto;
+    padding:6px 28px 60px;
+  }
+  #grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(268px, 1fr));
+    gap:12px;
+    margin-top:10px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+    padding:16px 16px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    box-shadow: 0 1px 2px rgba(35,32,25,0.04);
+    transition:border-color .15s ease, transform .12s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{
+    border-color:var(--brand);
+    background:var(--card-hover);
+    transform:translateY(-1px);
+    box-shadow: 0 6px 16px rgba(35,32,25,0.08);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .cat-icon{
+    width:30px;height:30px;
+    border-radius:8px;
+    background:#eef2f6;
+    border:1px solid var(--line-soft);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    font-size:14px;
+  }
+  .loc-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    border:1px solid var(--line-soft);
+    padding:3px 7px;
+    border-radius:5px;
+    white-space:nowrap;
+    text-transform:uppercase;
+  }
+  .loc-tag.yd{ color:var(--violet); border-color:rgba(139,143,214,0.35); }
+
+  .card-title{
+    font-size:14px;
+    line-height:1.42;
+    color:var(--ink);
+    font-weight:500;
+    flex:1;
+  }
+  .card-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:auto;
+  }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:9px;
+    font-weight:600;
+    padding:4px 9px;
+    border-radius:6px;
+    letter-spacing:.02em;
+  }
+  .tag.parafpara{ background:var(--brand-soft); color:var(--brand); }
+  .tag.taksit{ background:var(--teal-soft); color:var(--teal); }
+  .tag.indirim{ background:var(--coral-soft); color:var(--coral); }
+  .tag.diger{ background:var(--violet-soft); color:var(--violet); }
+
+  .amount{
+    font-family:'JetBrains Mono',monospace;
+    font-size:22px;
+    font-weight:700;
+    color:var(--brand);
+    letter-spacing:-.03em;
+  }
+  .amount-label{
+    font-size:10px;
+    color:var(--ink-faint);
+    margin-left:5px;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+  }
+
+
+  .ranking-section{
+    margin:10px 0 18px;
+    background:var(--card);
+    border:1px solid var(--line-soft);
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 1px 2px rgba(35,32,25,0.04);
+  }
+  .ranking-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px}
+  .ranking-head h2{font-family:'Space Grotesk',sans-serif;font-size:19px;margin:2px 0 0}
+  .ranking-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase}
+  .ranking-row{
+    display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;
+    padding:10px 8px;border-top:1px solid var(--line-soft)
+  }
+  .ranking-row:first-child{border-top:0}
+  .ranking-rank{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--ink-faint)}
+  .ranking-title{font-size:13px;color:var(--ink)}
+  .ranking-amount{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--brand);white-space:nowrap}
+  @media(max-width:640px){.ranking-row{grid-template-columns:30px 1fr}.ranking-amount{grid-column:2}.ranking-head{align-items:flex-start}}
+
+  .cat-label{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    color:var(--ink-faint);
+    align-self:center;
+    margin-left:auto;
+  }
+
+  #empty{
+    display:none;
+    text-align:center;
+    padding:70px 20px;
+    color:var(--ink-faint);
+  }
+  #empty .big{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    color:var(--ink-dim);
+    margin-bottom:6px;
+  }
+
+  footer{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px 40px;
+    color:var(--ink-faint);
+    font-size:11.5px;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{ background:var(--line); border-radius:6px; }
+
+  @media (max-width:640px){
+    .hero{padding:30px 18px 16px;}
+    .controls{padding:14px 18px 14px;}
+    main{padding:8px 18px 50px;}
+    .brand-text h1{ font-size:21px; }
+    #grid{ grid-template-columns:1fr; }
+  }
+
+
+  /* ---------- PWA / compact responsive layout ---------- */
+  html { min-height:100%; }
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  .hero, .controls, main, footer { max-width:1440px; }
+  .app-layout {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:14px;
+    align-items:start;
+  }
+  .campaign-column { min-width:0; }
+  .data-note {
+    margin:0 0 12px;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--card);
+    color:var(--ink-dim);
+    font-size:11px;
+    line-height:1.5;
+  }
+  .ranking-section {
+    position:sticky;
+    top:12px;
+    margin:0;
+    padding:13px;
+    max-height:calc(100vh - 24px);
+    overflow:auto;
+  }
+  .ranking-head { align-items:flex-start; }
+  .ranking-head h2 { font-size:17px; line-height:1.2; }
+  .ranking-row {
+    grid-template-columns:25px minmax(0,1fr);
+    gap:6px;
+    padding:9px 2px;
+  }
+  .ranking-title { font-size:11px; line-height:1.35; }
+  .ranking-amount {
+    grid-column:2;
+    font-size:13px;
+    justify-self:start;
+  }
+  #grid { grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); }
+  .card { padding:13px; gap:9px; }
+  .card-title { font-size:13px; }
+  .amount { font-size:20px; }
+  .controls { backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+  button, a, input { -webkit-tap-highlight-color:transparent; }
+  a, button { touch-action:manipulation; }
+
+  @media(max-width:760px) {
+    .hero { padding:17px 12px 9px; }
+    .controls { padding:8px 12px 9px; }
+    main { padding:7px 10px 32px; }
+    footer { padding:0 10px 25px; }
+    .brand-text h1 { font-size:19px; }
+    .chip { width:32px; height:26px; }
+    .hero-sub { font-size:11px; margin-top:7px; }
+    .count-badge { padding:6px 10px; font-size:11px; }
+    .search-row { gap:6px; margin-bottom:7px; }
+    #search { font-size:12px; padding:9px 8px 9px 32px; }
+    .clear-btn { padding:0 9px; font-size:10px; }
+    .filter-label { font-size:9px; }
+    .filt { font-size:10px; padding:3px 6px; }
+    .app-layout {
+      grid-template-columns:minmax(0,1fr) minmax(112px,34%);
+      gap:7px;
+    }
+    .data-note { font-size:9px; line-height:1.4; padding:8px; margin-bottom:8px; }
+    #grid { grid-template-columns:1fr; gap:7px; margin-top:0; }
+    .card { padding:9px; border-radius:9px; gap:7px; }
+    .card-top { gap:5px; }
+    .cat-icon { width:25px; height:25px; font-size:12px; }
+    .loc-tag { font-size:8px; padding:2px 4px; }
+    .card-title { font-size:11px; line-height:1.35; }
+    .amount { font-size:15px; }
+    .amount-label { display:block; margin:2px 0 0; font-size:8px; }
+    .tag { font-size:8px; padding:3px 5px; }
+    .cat-label { font-size:8px; }
+    .card a { font-size:9px !important; line-height:1.35; }
+    .ranking-section {
+      position:sticky;
+      top:7px;
+      padding:7px 6px;
+      border-radius:9px;
+      max-height:calc(100dvh - 14px);
+    }
+    .ranking-head { display:block; margin-bottom:6px; }
+    .ranking-head h2 { font-size:12px; margin-top:3px; }
+    .ranking-note { font-size:7px; margin-top:3px; }
+    .ranking-row {
+      grid-template-columns:17px minmax(0,1fr);
+      gap:3px;
+      padding:7px 0;
+    }
+    .ranking-rank { font-size:9px; }
+    .ranking-title {
+      font-size:8px;
+      line-height:1.25;
+      overflow-wrap:anywhere;
+    }
+    .ranking-amount { font-size:10px; grid-column:2; }
+    .data-note strong { display:inline; }
+    #empty { padding:35px 5px; font-size:10px; }
+    #empty .big { font-size:13px; }
+  }
+  @media(max-width:360px) {
+    .app-layout { grid-template-columns:minmax(0,1fr) 104px; gap:5px; }
+    .ranking-section { padding:6px 5px; }
+    .ranking-head h2 { font-size:11px; }
+    .card-title { font-size:10px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="brandmark">
+      <div class="chip"></div>
+      <div class="brand-text">
+        <span class="eyebrow">Paraf &middot; Kampanya Kataloğu</span>
+        <h1>Kasım 2026 Kampanya Defteri</h1>
+      </div>
+    </div>
+    <div class="count-badge"><b id="count">0</b> / <span id="total">0</span> kampanya</div>
+  </div>
+  <p class="hero-sub">1 Kasım 2026 tarihinde Paraf kampanya listesinden derlenen kayıtları ara; kampanya türü, kategori ve bölgeye göre filtrele.</p>
+</div>
+
+<div class="controls">
+  <div class="search-row">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input id="search" type="text" placeholder="Kampanya, marka veya anahtar kelime ara… (ör. elektronik, market, seyahat)">
+    </div>
+    <button class="clear-btn" id="resetBtn">Filtreleri Sıfırla</button>
+  </div>
+
+  <div class="filter-block">
+    <span class="filter-label">Kampanya Tipi</span>
+    <div class="chip-row" id="typeRow"></div>
+  </div>
+
+  <div class="filter-block">
+    <span class="filter-label">Bölge</span>
+    <div class="chip-row" id="locRow"></div>
+  </div>
+
+  <div class="filter-block">
+    <span class="filter-label">Kategori</span>
+    <div class="chip-row" id="catRow"></div>
+  </div>
+
+  <div class="divider-line"></div>
+</div>
+
+<main>
+  <div class="app-layout">
+    <section class="campaign-column">
+      <div class="data-note">
+        <strong>Veri notu:</strong> Bu katalog, 01.11.2026 tarihinde alınan Paraf kampanya liste dökümündeki 182 kayda dayanır. Dökümde kampanyaların başlangıç/bitiş tarihleri ve ayrıntılı koşulları yer almadığından, Kasım boyunca geçerli oldukları varsayılmamıştır. Her karttaki resmi bağlantıdan tarih, katılım ve kart koşullarını kontrol edin.
+      </div>
+      <div id="grid"></div>
+      <div id="empty">
+        <div class="big">Sonuç bulunamadı</div>
+        <div>Arama teriminizi veya filtrelerinizi değiştirmeyi deneyin.</div>
+      </div>
+    </section>
+    <aside class="ranking-section" aria-label="Genel ParafPara sıralaması">
+      <div class="ranking-head">
+        <div>
+          <div class="filter-label">GENEL SIRALAMA</div>
+          <h2>En yüksek ParafPara</h2>
+        </div>
+        <div class="ranking-note">Büyükten küçüğe</div>
+      </div>
+      <div id="ranking"></div>
+    </aside>
+  </div>
+</main>
+
+<footer id="footerNote">PARAF-KAMPANYA-DEFTERI &middot; KASIM 2026 · Kaynak liste: 01.11.2026</footer>
+
+<script>
+// ---------- Data ----------
+// type: parafpara=ParafPara, taksit=Taksit, indirim=%İndirim, diger=Diğer
+// loc: YI=Yurt İçi, YD=Yurt Dışı
+const CATS = {
+  market:{label:"Market",icon:"🛒"}, giyim:{label:"Giyim & Kozmetik",icon:"👕"}, yemek:{label:"Restoran & Yeme-İçme",icon:"🍽️"},
+  seyahat:{label:"Seyahat & Ulaşım",icon:"✈️"}, akaryakit:{label:"Akaryakıt & Enerji",icon:"⛽"}, mobilya:{label:"Mobilya & Ev",icon:"🛋️"},
+  elektronik:{label:"Elektronik & Beyaz Eşya",icon:"💻"}, fatura:{label:"Fatura, Vergi & Sigorta",icon:"🧾"}, saglik:{label:"Sağlık",icon:"🩺"},
+  egitim:{label:"Eğitim",icon:"🎓"}, eticaret:{label:"E-Ticaret",icon:"📦"}, uyelik:{label:"Üyelik & Abonelik",icon:"⭐"},
+  emeklilik:{label:"Emeklilik & Finans",icon:"💰"}, kart:{label:"Kart",icon:"💳"}, kultur:{label:"Kültür & Sanat",icon:"🎨"},
+  yurtdisi:{label:"Yurt Dışı",icon:"🌍"}, otomotiv:{label:"Otomotiv",icon:"🚗"}, diger:{label:"Diğer",icon:"✦"}
+};
+
+const TYPES = {
+  parafpara: {label:"ParafPara"},
+  taksit:    {label:"Taksit"},
+  indirim:   {label:"İndirim"},
+  diger:     {label:"Diğer"},
+};
+
+const LOCS = {
+  YI: {label:"Yurt İçi"},
+  YD: {label:"Yurt Dışı"},
+};
+
+const DATA = [
+  [
+    "Seçili E-Ticaret Alışverişlerinize 8.000 TL'ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "eticaret",
+    "YI",
+    8000,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/secili-eticaret-alisverislerinize-8000tlye-varan-parafpara.html"
+  ],
+  [
+    "Market Harcamalarınıza 1.000 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "market",
+    "YI",
+    1000,
+    "https://www.paraf.com.tr/tr/kampanyalar/market/market-harcamalariniza-1000tl-parafpara12.html"
+  ],
+  [
+    "Seçili E-Ticaret Alışverişlerinize 2.000 TL'ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "eticaret",
+    "YI",
+    2000,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/secili-eticaret-alisverislerinize-2000tlye-varan-parafpara21.html"
+  ],
+  [
+    "E-Ticaret Alışverişlerinize 1.000 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "eticaret",
+    "YI",
+    1000,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/e-ticaret-alisverislerinize-1000tl-parafpara.html"
+  ],
+  [
+    "Emlak ve Çevre Temizlik Vergisi Ödemelerinize Ücretsiz 4 Aya Varan Taksit",
+    [
+      "taksit",
+      "indirim"
+    ],
+    "diger",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/emlak-ve-cevre-temizlik-vergisi-odemelerinize-ucretsiz-4evaran-taksit1.html"
+  ],
+  [
+    "Monster Notebook’ta 10.000 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "elektronik",
+    "YI",
+    10000,
+    "https://www.paraf.com.tr/tr/kampanyalar/beyaz-esya-ve-elektronik/monster-notebookta-10000-tl-parafpara2.html"
+  ],
+  [
+    "Giyim ve Kozmetik Alışverişlerinize 1.250 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "giyim",
+    "YI",
+    1250,
+    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/giyim-ve-kozmetik-alisverislerinize-1250tl-parafpara.html"
+  ],
+  [
+    "Parafly Kredi Kartınız ile Size Özel 5.000 TL ParafPara Kampanyası",
+    [
+      "parafpara"
+    ],
+    "diger",
+    "YI",
+    5000,
+    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/parafly-kredi-kartiniz-ile-size-ozel-5000tl-parafpara-kampanyasi1.html"
+  ],
+  [
+    "Trendyol ‘da Peşin Fiyatına 9 Aya varan Taksit",
+    [
+      "taksit"
+    ],
+    "eticaret",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/trendyolda-pesin-fiyatina-9-aya-varan-taksitaralik.html"
+  ],
+  [
+    "Amazon.com.tr de Peşin Fiyatına 9 aya varan Taksit",
+    [
+      "taksit"
+    ],
+    "eticaret",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/amazon-com-trde-pesin-fiyatina-9-aya-varan-taksit.html"
+  ],
+  [
+    "Tarım Kredi Koop Marketler'de 1.000 TL’ye Varan ParafPara!",
+    [
+      "parafpara"
+    ],
+    "market",
+    "YI",
+    1000,
+    "https://www.paraf.com.tr/tr/kampanyalar/market/tarim-kredi-koop-marketlerde-1000tlye-varan-parafpara.html"
+  ],
+  [
+    "Cepte Şok'ta 500 TL'ye Varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "market",
+    "YI",
+    500,
+    "https://www.paraf.com.tr/tr/kampanyalar/market/cepte-sokta-500tlye-varan-parafpara.html"
+  ],
+  [
+    "Market Harcamalarınıza 1.500 TL, Mobil/QR ile Ödemelerinize 2.000 TL’ye varan Pa",
+    [
+      "diger"
+    ],
+    "market",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/market/market-harcamalariniza-1500tl-mobil-qr-ile-odemelerinize-2000-tlye-varan-parafpara1.html"
+  ],
+  [
+    "Mobilya, Dekorasyon ve Yapı Marketi Alışverişinize 1.250 TL'ye Varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "mobilya",
+    "YI",
+    1250,
+    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/mobilya-dekorasyon-ve-yapi-marketi-alisverislerinize-1250-tlye-varan-parafpara2.html"
+  ],
+  [
+    "Madame Coco da 400 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "mobilya",
+    "YI",
+    400,
+    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/madame-cocoda-400-tl-parafpara.html"
+  ],
+  [
+    "Paraf Esnaf ile Market ve Gıda Harcamalarınıza 700 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "diger",
+    "YI",
+    700,
+    "https://www.paraf.com.tr/tr/kampanyalar/ticari-kampanyalar/paraf-esnaf-ile-market-ve-gida-harcamalariniza-700tl-parafpara.html"
+  ],
+  [
+    "Giyim, optik ve saat alışverişlerinize 2.000 TL, mobil/QR ile ödemelerinize eks",
+    [
+      "diger"
+    ],
+    "giyim",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/giyim-optik-ve-saat-alisverislerinize-2000tl-mobil-qr-ile-odemelerinize-ekstra-500tl-toplam-2500tl-parafpara1.html"
+  ],
+  [
+    "Saat&Saat’te Peşin Fiyatına 5 Taksit",
+    [
+      "taksit"
+    ],
+    "giyim",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/saatvesaatte-pesin-fiyatina-5-taksit.html"
+  ],
+  [
+    "Paraf ile Madame Coco mağazalarında Peşin Fiyatına 3 taksit fırsatı!",
+    [
+      "taksit"
+    ],
+    "mobilya",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/paraf-ile-madame-coco-magazalarinda-pesin-fiyatina-3-taksit-firsati.html"
+  ],
+  [
+    "Kozmetik, Güzellik Salonu ve Kuaför Harcamalarınıza 750 TL’ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "giyim",
+    "YI",
+    750,
+    "https://www.paraf.com.tr/tr/kampanyalar/giyim-kozmetik-ve-aksesuar/kozmetik-guzellik-salonu-ve-kuafor-harcamalariniza-625tl-parafpara-mobil-qr-ile-odemelerinize-750tlye-varan-parafpara1.html"
+  ],
+  [
+    "Premium'a Özel Yurt Dışı Online Alışverişlerinize 3.000 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "yurtdisi",
+    "YD",
+    3000,
+    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/premiuma-ozel-yurt-disi-online-alisverislerinize-3000-tl-parafpara2.html"
+  ],
+  [
+    "Seyahat, konaklama ve araç kiralama harcamalarınıza 3.500 TL ParafPara!",
+    [
+      "parafpara"
+    ],
+    "seyahat",
+    "YI",
+    3500,
+    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/seyahat-konaklama-ve-arac-kiralama-harcamalariniza-3500tl-parafpara41.html"
+  ],
+  [
+    "Akaryakıt Harcamalarınıza 450 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "akaryakit",
+    "YI",
+    450,
+    "https://www.paraf.com.tr/tr/kampanyalar/akaryakit/akaryakit-harcamalariniza-450-parafpara.html"
+  ],
+  [
+    "Touristica.com.tr'de 8.500 TL'ye varan ParafPara ve Peşin fiyatına 9 Taksit!",
+    [
+      "parafpara",
+      "taksit"
+    ],
+    "seyahat",
+    "YI",
+    8500,
+    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/touristica-com-tr-de-8500tlye-varan-parafpara-ve-pesin-fiyatina-9-taksit-agustos12.html"
+  ],
+  [
+    "Otomotiv Lastik,Yedek Parça ve Araç Bakım Harcamalarınıza 1.500 TL'ye Varan Para",
+    [
+      "diger"
+    ],
+    "otomotiv",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/otomotiv/otomotiv-lastik-yedek-parca-ve-arac-bakim-harcamalariniza-1500tlye-varan-parafpara2.html"
+  ],
+  [
+    "Paraf Troy Kartlara Özel Seçili Sektörlerde 400 TL ye varan İndirim Kampanyası",
+    [
+      "diger"
+    ],
+    "yemek",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/kafe-ve-restoran/paraf-troy-kartlara-ozel-secili-sektorlerde-400tlye-varan-indirim-kampanyasi1.html"
+  ],
+  [
+    "Beyaz Eşya ve Elektronik Alışverişlerinize 3.500 TL'ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "elektronik",
+    "YI",
+    3500,
+    "https://www.paraf.com.tr/tr/kampanyalar/beyaz-esya-ve-elektronik/beyaz-esya-ve-elektronik-alisverislerinize-3500tlye-varan-parafpara11.html"
+  ],
+  [
+    "Mobilya, Dekorasyon ve Yapı Marketi Alışverişinize 6.000 TL'ye Varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "mobilya",
+    "YI",
+    6000,
+    "https://www.paraf.com.tr/tr/kampanyalar/mobilya-ve-dekorasyon/mobilya-dekorasyon-ve-yapi-marketi-alisverislerinize-6000tlye-varan-parafpara21.html"
+  ],
+  [
+    "Peşin Okul Ödemelerinize Paraf POS'larında Ücretsiz 6 Aya Varan Taksit Kampanyas",
+    [
+      "taksit",
+      "indirim"
+    ],
+    "egitim",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/egitim-kirtasiye/pesin-okul-odemelerinize-paraf-poslarinda-ucretsiz-6-ya-varan-taksit-kampanyasi.html"
+  ],
+  [
+    "Uçak bileti harcamalarınıza 2.250 TL'ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "seyahat",
+    "YI",
+    2250,
+    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/ucak-bileti-harcamalariniza-2250-tlye-varan-parafpara11.html"
+  ],
+  [
+    "Yurt Dışı Alışverişlerinize 10.000 TL'ye varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "yurtdisi",
+    "YD",
+    10000,
+    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-alisverislerinize-10000tlye-varan-parafpara.html"
+  ],
+  [
+    "Silver logolu Paraf Premium Mastercard Sahiplerine Yurt Dışı Otel Harcamalarında",
+    [
+      "diger"
+    ],
+    "seyahat",
+    "YD",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/seyahat/silver-logolu-paraf-premium-mastercard-sahiplerine-yurt-disi-otel-harcamalarinda-yuzde10-indirim.html"
+  ],
+  [
+    "Premium'a Özel Yurt Dışı Online Seyahat Alışverişlerinize 6.000 TL'ye varan Para",
+    [
+      "diger"
+    ],
+    "yurtdisi",
+    "YD",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/premiuma-ozel-yurtdisi-online-seyahat-alisverislerinize-6000tlye-varan-parafpara1.html"
+  ],
+  [
+    "Yurt Dışı Online Seyahat Alışverişlerinize 1.500 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "yurtdisi",
+    "YD",
+    1500,
+    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-online-seyahat-alisverislerinize-1500tl-parafpara1.html"
+  ],
+  [
+    "Yurt dışı online alışverişlerinize 750 TL ParafPara!",
+    [
+      "parafpara"
+    ],
+    "yurtdisi",
+    "YD",
+    750,
+    "https://www.paraf.com.tr/tr/kampanyalar/yurt-disi/yurt-disi-online-alisverislerinize-750-tl-parafpara1.html"
+  ],
+  [
+    "Hepsiburada'da peşin fiyatına 9 aya varan taksit",
+    [
+      "taksit"
+    ],
+    "eticaret",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/e-ticaret/hepsiburadada-pesin-fiyatina-9-aya-varan-taksit11.html"
+  ],
+  [
+    "Otomatik Fatura Ödeme Talimatlarınıza 1.000 TL'ye Varan ParafPara",
+    [
+      "parafpara"
+    ],
+    "diger",
+    "YI",
+    1000,
+    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/otomatik-fatura-odeme-talimatlariniza-1000-tlye-varan-parafpara1111.html"
+  ],
+  [
+    "App Store harcamalarınıza 100 TL ParafPara!",
+    [
+      "parafpara"
+    ],
+    "diger",
+    "YI",
+    100,
+    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/app-store-harcamalariniza-100-tl-parafpara221.html"
+  ],
+  [
+    "Paraf Değerlimiz Kredi Kart Sahibi Emekli Müşterilerimize Özel Otomatik Fatura Ö",
+    [
+      "diger"
+    ],
+    "diger",
+    "YI",
+    0,
+    "https://www.paraf.com.tr/tr/kampanyalar/diger-firsatlar/paraf-degerlimiz-kredi-kart-sahibi-emekli-musterilerimize-ozel-otomatik-fatura-odeme-talimatlarina-3500tlye-varan-parafpara1111.html"
+  ],
+  [
+    "Veteriner ve Pet Shop Harcamalarınıza Özel 600 TL ParafPara",
+    [
+      "parafpara"
+    ],
+    "diger",
+    "YI",
+    600,
