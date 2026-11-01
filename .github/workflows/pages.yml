@@ -21,6 +21,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Generate install icons
+        run: |
+          mkdir -p icons
+          convert icons/paraf-icon.svg -resize 192x192 icons/icon-192.png
+          convert icons/paraf-icon.svg -resize 512x512 icons/icon-512.png
+          convert icons/paraf-icon.svg -resize 512x512 -gravity center -background transparent -extent 512x512 icons/icon-512-maskable.png
+          convert icons/paraf-icon.svg -resize 180x180 icons/apple-touch-icon.png
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
