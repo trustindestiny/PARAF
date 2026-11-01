@@ -21,17 +21,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Install ImageMagick
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y imagemagick
-      - name: Generate install icons
-        run: |
-          mkdir -p icons
-          convert -background "#0756b8" icons/paraf-icon.svg -resize 192x192^ -gravity center -extent 192x192 PNG32:icons/icon-192.png
-          convert -background "#0756b8" icons/paraf-icon.svg -resize 512x512^ -gravity center -extent 512x512 PNG32:icons/icon-512.png
-          convert -background "#0756b8" icons/paraf-icon.svg -resize 512x512^ -gravity center -extent 512x512 PNG32:icons/icon-512-maskable.png
-          convert -background "#0756b8" icons/paraf-icon.svg -resize 180x180^ -gravity center -extent 180x180 PNG32:icons/apple-touch-icon.png
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
